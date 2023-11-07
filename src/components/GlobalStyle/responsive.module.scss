@@ -1,0 +1,38 @@
+$mobile: 480px;
+$tablet: 1280px;
+$desktop: 1920px;
+
+@mixin responsive($viewWidth)  {
+    @if $viewWidth == desktop {
+        @media screen and (max-width: calc($desktop + 1px)) {
+            @content;
+        }
+    }
+    @else if $viewWidth == tablet {
+        @media screen and (max-width: calc($tablet + 1px)) {
+            @content;
+        }
+    }
+    @else if $viewWidth == mobile {
+        @media screen and (max-width: calc($mobile + 1px)) {
+            @content;
+        }
+    }
+}
+
+
+@media screen and (max-width:1281px) { //tablet
+    :root {
+        --containerMargin: 2.5rem 2rem;
+        --contentMargin: 30px 30px;
+    }
+}
+
+@include responsive(mobile) {
+    :root {
+        --containerMargin: 2rem 1rem;
+        --primaryTextFontSize: 1.1rem;
+        --h2FontSize: 1.7rem;
+    }
+}
+
